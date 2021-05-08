@@ -4,6 +4,8 @@ using Mirror;
 using UnityEngine;
 
 public class Player : NetworkBehaviour {
+    [SyncVar(hook = nameof(OnHelloCountChanged))]
+    int helloCount = 0;
     void HandleMovement() {
         if (isLocalPlayer) {
             float horiz = Input.GetAxis("Horizontal");
@@ -25,11 +27,16 @@ public class Player : NetworkBehaviour {
     [Command]
     void Hello() {
         Debug.Log("Received hello from client");
+        helloCount++;
         ReplyHello();
     }
 
     [TargetRpc]
     void ReplyHello() {
         Debug.Log("Received hello from server");
+    }
+
+    void OnHelloCountChanged(int oldCount, int newCount) {
+        Debug.Log($"{oldCount} previous hellos, {newCount} hellos now");
     }
 }
