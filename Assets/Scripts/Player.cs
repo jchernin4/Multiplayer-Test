@@ -15,5 +15,21 @@ public class Player : NetworkBehaviour {
 
     void Update() {
         HandleMovement();
+
+        if (isLocalPlayer && Input.GetKeyDown(KeyCode.X)) {
+            Debug.Log("Sending hello!");
+            Hello();
+        }
+    }
+
+    [Command]
+    void Hello() {
+        Debug.Log("Received hello from client");
+        ReplyHello();
+    }
+
+    [TargetRpc]
+    void ReplyHello() {
+        Debug.Log("Received hello from server");
     }
 }
