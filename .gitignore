@@ -58,3 +58,15 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+
+
+# My custom additions
+/Multiplayer Test_clone_0/
+/Multiplayer Test/[Ll]ibrary/
+/Multiplayer Test/[Tt]emp/
+/Multiplayer Test/[Oo]bj/
+/Multiplayer Test/[Bb]uild/
+/Multiplayer Test/[Bb]uilds/
+/Multiplayer Test/[Ll]ogs/
+/Multiplayer Test/[Mm]emoryCaptures/
+
