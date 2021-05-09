@@ -5,17 +5,30 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
+using Mirror;
+using UnityEditor;
 
-public class CameraController : MonoBehaviour {
+public class PlayerLook : MonoBehaviour {
+    public PlayerMovement movementScript;
+    
     public float horizSens = 100f;
     public float vertSens = 100f;
     public Transform playerBody;
     private float xRot = 0f;
 
     void Start() {
+        if (!movementScript.isLocalPlayer || !movementScript.hasAuthority) {
+            gameObject.SetActive(false);
+            return;
+        }
         Cursor.lockState = CursorLockMode.Locked;
     }
+    
     void Update() {
+        if (!movementScript.isLocalPlayer || !movementScript.hasAuthority) {
+            gameObject.SetActive(false);
+            return;
+        }
         float mouseX = Input.GetAxis("Mouse X") * horizSens * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * vertSens * Time.deltaTime;
 
