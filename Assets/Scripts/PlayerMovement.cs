@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
 
-public class PlayerMovement : NetworkBehaviour {
+public class PlayerMovement : MonoBehaviour {
+    public PlayerNetworkController playerNetworkController;
     public CharacterController controller;
     public Transform groundCheck;
 
@@ -14,12 +15,13 @@ public class PlayerMovement : NetworkBehaviour {
 
     private Vector3 velocity;
 
+    // TODO: Replace groundcheck with raycast, makes it simpler
     public float groundCheckRadius = 0.4f;
     public LayerMask groundMask;
     public bool isGrounded;
 
     private void Start() {
-        if (!isLocalPlayer || !hasAuthority) {
+        if (!playerNetworkController.isLocalPlayer || !playerNetworkController.hasAuthority) {
             return;
         }
         controller = GetComponent<CharacterController>();
@@ -30,7 +32,7 @@ public class PlayerMovement : NetworkBehaviour {
     }
     
     void Update() {
-        if (!isLocalPlayer || !hasAuthority) {
+        if (!playerNetworkController.isLocalPlayer || !playerNetworkController.hasAuthority) {
             return;
         }
 
@@ -41,9 +43,7 @@ public class PlayerMovement : NetworkBehaviour {
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-
         Vector3 move = transform.right * x + transform.forward * z;
-
         controller.Move(move * (speed * Time.deltaTime));
 
         if (Input.GetButtonDown("Jump") && isGrounded) {
@@ -52,9 +52,5 @@ public class PlayerMovement : NetworkBehaviour {
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-    }
-
-    bool getIsLocalPlayer() {
-        return isLocalPlayer;
     }
 }
