@@ -8,6 +8,9 @@ public class PlayerControl : MonoBehaviour {
     public float shotCooldown = 0.5f;
 
     public float currentCooldown = 0f;
+
+    public float maxHealth = 100f;
+    public float curHealth = 100f;
     
     void Update() {
         if (!playerNetworkController.isLocalPlayer || !playerNetworkController.hasAuthority) {
@@ -24,5 +27,4 @@ public class PlayerControl : MonoBehaviour {
             currentCooldown -= Time.deltaTime;
         }
     }
-
 }
