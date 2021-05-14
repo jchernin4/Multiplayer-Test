@@ -94,10 +94,9 @@ GameObject:
   - component: {fileID: 1893564323054397025}
   - component: {fileID: 2949815460917419240}
   - component: {fileID: 5723092403396539191}
-  - component: {fileID: 228344625049248337}
+  - component: {fileID: 3565085326553152941}
   - component: {fileID: 2583586016272649543}
   - component: {fileID: 4841611015858865118}
-  - component: {fileID: 3565085326553152941}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -178,61 +177,6 @@ MonoBehaviour:
   compressRotation: 0
   interpolateScale: 1
   syncScale: 1
---- !u!114 &228344625049248337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102081819790050050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29cd8fa535265b2478c6119dfa9d4341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  bulletPrefab: {fileID: 6639794559767662766, guid: 0e54b69b09e571d469211c201c3cfd01, type: 3}
-  bulletExit: {fileID: 6341498966316816779}
-  bulletForce: 1000
---- !u!114 &2583586016272649543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102081819790050050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3bc86475cd8ddc4d9c087eb595d7ecd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNetworkController: {fileID: 228344625049248337}
-  controller: {fileID: 0}
-  groundCheck: {fileID: 4597986429707848940}
-  speed: 12
-  gravity: -19.62
-  jumpHeight: 1.5
-  groundCheckRadius: 0.5
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  isGrounded: 0
---- !u!114 &4841611015858865118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102081819790050050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74f8d9af996b23a42ad40a1db4ec2c43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNetworkController: {fileID: 228344625049248337}
-  shotCooldown: 0.5
-  currentCooldown: 0
 --- !u!114 &3565085326553152941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +199,51 @@ MonoBehaviour:
   interpolateScale: 1
   syncScale: 1
   target: {fileID: 567623386259566775}
+--- !u!114 &2583586016272649543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102081819790050050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3bc86475cd8ddc4d9c087eb595d7ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  controller: {fileID: 0}
+  groundCheck: {fileID: 4597986429707848940}
+  speed: 12
+  gravity: -19.62
+  jumpHeight: 1.5
+  groundCheckRadius: 0.5
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  isGrounded: 0
+--- !u!114 &4841611015858865118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102081819790050050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74f8d9af996b23a42ad40a1db4ec2c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  bulletPrefab: {fileID: 6639794559767662766, guid: 0e54b69b09e571d469211c201c3cfd01, type: 3}
+  bulletExit: {fileID: 6341498966316816779}
+  bulletForce: 200
+  shotCooldown: 0.5
+  currentCooldown: 0
+  maxHealth: 100
+  curHealth: 100
 --- !u!1 &2922458057154723903
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +328,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2922458057154723903}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &9000852551280026175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99799e06a32fdc1488f841fc5508dbce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNetworkController: {fileID: 228344625049248337}
+  playerControl: {fileID: 4841611015858865118}
   horizSens: 100
   vertSens: 100
   playerBody: {fileID: 2545552593947760693}
@@ -508,7 +497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6341498966316816779}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.42399994, y: -1.45, z: 0.07399999}
+  m_LocalPosition: {x: 0.42399994, y: -1.45, z: 0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1273328851917855866}

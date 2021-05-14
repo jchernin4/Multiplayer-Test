@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
-    public PlayerNetworkController playerNetworkController;
+public class PlayerMovement : NetworkBehaviour {
     public CharacterController controller;
     public Transform groundCheck;
 
@@ -21,7 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     public bool isGrounded;
 
     private void Start() {
-        if (!playerNetworkController.isLocalPlayer || !playerNetworkController.hasAuthority) {
+        if (!isLocalPlayer || !hasAuthority) {
             return;
         }
         controller = GetComponent<CharacterController>();
@@ -32,7 +31,7 @@ public class PlayerMovement : MonoBehaviour {
     }
     
     void Update() {
-        if (!playerNetworkController.isLocalPlayer || !playerNetworkController.hasAuthority) {
+        if (!isLocalPlayer || !hasAuthority) {
             return;
         }
 

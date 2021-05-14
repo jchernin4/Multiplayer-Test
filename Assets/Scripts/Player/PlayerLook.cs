@@ -1,10 +1,10 @@
+using Mirror;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 public class PlayerLook : MonoBehaviour {
-    public PlayerNetworkController playerNetworkController;
-
+    public PlayerControl playerControl;
     public float horizSens = 100f;
     public float vertSens = 100f;
     public Transform playerBody;
@@ -12,7 +12,7 @@ public class PlayerLook : MonoBehaviour {
     private float xRot = 0f;
 
     void Start() {
-        if (!playerNetworkController.isLocalPlayer || !playerNetworkController.hasAuthority) {
+        if (!playerControl.isLocalPlayer || !playerControl.hasAuthority) {
             gameObject.SetActive(false);
             return;
         }
@@ -20,7 +20,7 @@ public class PlayerLook : MonoBehaviour {
     }
     
     void Update() {
-        if (!playerNetworkController.isLocalPlayer || !playerNetworkController.hasAuthority) {
+        if (!playerControl.isLocalPlayer || !playerControl.hasAuthority) {
             gameObject.SetActive(false);
             return;
         }
